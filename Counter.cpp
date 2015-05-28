@@ -1,5 +1,4 @@
 #include "Counter.hpp"
-///Még az RGB kódot javítani kell!!!
 Counter::Counter(int _posx, int _posy, int _sizex, int _sizey, string _textmess, int _row, int _r, int _g, int _b,  int _upbar, int _downbar)
 : Originalwidget( _posx, _posy, _sizex, _sizey, _textmess, _row, _r, _g, _b)
 {
@@ -56,21 +55,19 @@ Counter::Counter(int _posx, int _posy, int _sizex, int _sizey, string _textmess,
     }
 
     void Counter::draw()
-    {/// ezt jo lenne megnézni a szépség érdekében
-        //gout.load_font("LiberationSans-Regular.ttf", 16);
+    {
         int szorzox = 1;
         int szorzoy = 1;
-        int marginx = 5;
         if ((sizey-sizey/3)/25 > 1)
         {
             szorzox = (sizey-sizey/3)/25;
-            marginx = marginx*szorzox;
+            margin = margin*szorzox;
         }
         if (sizey/25 > 1)
         {
             szorzoy = sizey/25;
         }
-        gout<<color(r,g,b)<<move_to(posx,posy)<<box(sizex,sizey)<<move_to(posx+marginx,posy+sizey/2+gout.cdescent())<<color(255-r,255-g,255-b) << text(textmess);
+        gout<<color(r,g,b)<<move_to(posx,posy)<<box(sizex,sizey)<<move_to(posx+margin,posy+sizey/2+gout.cdescent())<<color(255-r,255-g,255-b) << text(textmess);
         gout << color(255-r,255-g,255-b)<<move_to(posx+sizex-(sizey-sizey/3),posy)<<box(sizey-sizey/3,sizey);
         gout << color(150,150,150)<< move_to(posx+sizex-(sizey-sizey/3),posy+sizey/2) << line(sizey-sizey/3,0);
 

@@ -10,11 +10,11 @@
     {
         if (!statictextbox)
         {
-            gout << move_to(posx,posy) << color(r,g,b) << box(sizex,sizey) << move_to(posx+5,posy+sizey/2+gout.cascent()/2) << color(255-r,255-g,255-b) << text(textmess);
+            gout << move_to(posx,posy) << color(r,g,b) << box(sizex,sizey) << move_to(posx+margin,posy+sizey/2+gout.cascent()/2) << color(255-r,255-g,255-b) << text(textmess);
         }
         else
         {
-            gout << move_to(posx,posy) << color(r,g,b) << box(10+gout.twidth(textmess),sizey) << move_to(posx+5,posy+sizey/2+gout.cascent()/2) << color(255-r,255-g,255-b) << text(textmess);
+            gout << move_to(posx,posy) << color(r,g,b) << box(10+gout.twidth(textmess),sizey) << move_to(posx+margin,posy+sizey/2+gout.cascent()/2) << color(255-r,255-g,255-b) << text(textmess);
         }
   }
 
