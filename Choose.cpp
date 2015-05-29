@@ -15,20 +15,20 @@ void Choose::draw()
     {
         for (unsigned int i = 0; i < stringtext.size(); i++)
         {
-            base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)+counter) << color(255,0,0) << text(stringtext[i]);
+            base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)-counter) << color(r,g,b) << text(stringtext[i]);
         }
     }
 
-    gout << stamp(base, 0, 0, sizex, sizex, posx, posy);
+    gout << stamp(base, 0, 0, sizex, sizey, posx, posy);
 }
 
 void Choose::functionmake(event ev)
 {
-if (ev.button == btn_wheelup )
+if (ev.button == btn_wheelup && focusban && counter >= 0)
 {
     counter--;
 }
-if (ev.button == btn_wheeldown)
+if (ev.button == btn_wheeldown && focusban)
 {
     counter++;
 }
