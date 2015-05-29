@@ -15,13 +15,13 @@ void Choose::draw()
     {
         for (unsigned int i = 0; i < stringtext.size(); i++)
         {
-            base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)-counter) << color(r,g,b) << text(stringtext[i]);
-            base << move_to(px,(gout.cascent()+gout.cdescent())*(reckon+1)-counter) << color(r/2,g/2,b/2) << text(stringtext[reckon]);
+            base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)-counter+px*px) << color(r,g,b) << text(stringtext[i]);
+            base << move_to(px,(gout.cascent()+gout.cdescent())*(reckon+1)-counter+px*px) << color(r/2,g/2,b/2) << text(stringtext[reckon]);
             result = stringtext[reckon];
         }
     }
 
-    gout << stamp(base, 0, 0, sizex, sizey, posx, posy);
+    gout << stamp(base, 0, px*px, sizex, sizey, posx, posy);
 }
 
 void Choose::functionmake(event ev)
