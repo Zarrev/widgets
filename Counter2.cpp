@@ -69,6 +69,7 @@ void Counter2::value(event ev)
             which = false;
         }
     }
+    result = textmess;
 }
 
 void Counter2::draw()

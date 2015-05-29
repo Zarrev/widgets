@@ -28,10 +28,12 @@ void CheckBox::functionmake(event ev)
         if (counter%2 != 0)
         {
             unlogical = true;
+            result = "true";
         }
         else
         {
             unlogical = false;
+            result = "false";
         }
     }
 }

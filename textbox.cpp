@@ -1,4 +1,5 @@
     #include "textbox.hpp"
+    #include <iostream>
 
     Textbox::Textbox(int _posx, int _posy, int _sizex, int _sizey, string _textmess, int _row, int _r, int _g, int _b, bool _statictextbox)
    : Originalwidget( _posx, _posy, _sizex, _sizey, _textmess, _row, _r, _g, _b)
@@ -43,17 +44,25 @@
                 }
             }
             number = gout.twidth(textmess);
-            if (ev.keycode == key_enter)
+            /*if (ev.keycode == key_enter)
             {
                 stringtext.push_back(textmess);
                 textmess = "";
-            }
+            }*/
         }
-        if (!focusban && !statictextbox)
+        if (logical && textmess != "")
+            {
+                if (textmess != "--"){
+                stringtext.push_back(textmess);}
+                textmess = "--";
+                logical = false;
+                counter = 0;
+            }
+        /*if (!focusban && !statictextbox)
         {
             counter = 0;
             textmess = "--";
-        }
+        }*/
     }
 
     string Textbox::sgetter(string a)
@@ -63,9 +72,12 @@
     }
     void Textbox::ssetter()
     {
+        logical = true;
+    }
+    bool Textbox::booler()
+    {
 
     }
-
     void Textbox::ssetter2(string a)
     {
             textmess = a;

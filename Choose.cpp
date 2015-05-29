@@ -17,6 +17,7 @@ void Choose::draw()
         {
             base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)-counter) << color(r,g,b) << text(stringtext[i]);
             base << move_to(px,(gout.cascent()+gout.cdescent())*(reckon+1)-counter) << color(r/2,g/2,b/2) << text(stringtext[reckon]);
+            result = stringtext[reckon];
         }
     }
 
@@ -47,12 +48,20 @@ if (ev.button == btn_left && focusban)
     }
 }
 
+if (focusban && ev.keycode == key_down && reckon < stringtext.size()-1)
+{
+    reckon++;
+}
+if (focusban && ev.keycode == key_up && reckon > 0)
+{
+    reckon--;
+}
+
 }
 
 void Choose::ssetter3(vector<string> a)
 {
     stringtext = a;
-    std::cout << stringtext[0] << endl;
 }
 
 string Choose::sgetter(string a)

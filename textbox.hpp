@@ -11,6 +11,7 @@ public:
      virtual string sgetter(string a);
      virtual void ssetter();
      virtual void ssetter2(string a);
+     virtual bool booler();
 };
 
 #endif // TEXTBOX_HPP_INCLUDED

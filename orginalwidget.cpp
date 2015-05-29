@@ -37,3 +37,8 @@ vector<string> Originalwidget::getter()
 {
     return stringtext;
 }
+
+string Originalwidget::resultgetter()
+{
+    return result;
+}

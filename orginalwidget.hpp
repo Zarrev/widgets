@@ -36,6 +36,8 @@ public:
     virtual void ssetter2(string a) {};
     virtual void ssetter3(vector<string> a) {};
     virtual vector<string> getter();
+    virtual bool booler(){};
+    virtual string resultgetter();
 
 };
 

@@ -1,1 +1,23 @@
-//:Application(int _SX, int _SY)
+#include "MyApplication.hpp"
+
+void MyApplication::make(string a)
+{
+    if (thank){
+    selected.push_back(a);}
+}
+
+void MyApplication::writeout()
+{
+    ofstream myapplicationValue;
+    myapplicationValue.open ("myapplicationValue.txt");
+    for (unsigned int i = 0; i < selected.size(); i++)
+    {
+        myapplicationValue << selected[i] << "\n";
+    }
+    myapplicationValue.close();
+}
+
+void MyApplication::thanks()
+{
+    thank = true;
+}

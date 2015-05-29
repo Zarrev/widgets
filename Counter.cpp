@@ -1,4 +1,5 @@
 #include "Counter.hpp"
+#include <iostream>
 Counter::Counter(int _posx, int _posy, int _sizex, int _sizey, string _textmess, int _row, int _r, int _g, int _b,  int _upbar, int _downbar)
 : Originalwidget( _posx, _posy, _sizex, _sizey, _textmess, _row, _r, _g, _b)
 {
@@ -52,20 +53,27 @@ Counter::Counter(int _posx, int _posy, int _sizex, int _sizey, string _textmess,
                 ss.clear();
             }
         }
+        result = textmess;
     }
 
     void Counter::draw()
     {
+        static int zero = 0;
         int szorzox = 1;
         int szorzoy = 1;
         if ((sizey-sizey/3)/25 > 1)
         {
             szorzox = (sizey-sizey/3)/25;
-            margin = margin*szorzox;
+
         }
         if (sizey/25 > 1)
         {
             szorzoy = sizey/25;
+        }
+        if (zero = 0)
+        {
+            margin = margin*szorzox;
+            zero++;
         }
         gout<<color(r,g,b)<<move_to(posx,posy)<<box(sizex,sizey)<<move_to(posx+margin,posy+sizey/2+gout.cdescent())<<color(255-r,255-g,255-b) << text(textmess);
         gout << color(255-r,255-g,255-b)<<move_to(posx+sizex-(sizey-sizey/3),posy)<<box(sizey-sizey/3,sizey);
@@ -74,8 +82,8 @@ Counter::Counter(int _posx, int _posy, int _sizex, int _sizey, string _textmess,
         if (logical && focusban)
         {
             gout << color(0,255,0) << move_to((posx+sizex-(sizey-sizey/4)/2),posy+sizey/4-(5/2)*szorzoy*2) << line(-5*szorzox,5*szorzoy) << line(10*szorzox,0*szorzoy) << line(-5*szorzox,-5*szorzoy);
-            gout << color(0,255,0) << move_to((posx+sizex-(sizey-sizey/4)/2),posy+sizey/4-(5/2)*szorzoy) << line(-5*szorzox/2,5*szorzoy/2) << line(10*szorzox/2,0*szorzoy/2) << line(-5*szorzox/2,-5*szorzoy/2);
-            gout << color(0,255,0) << move_to((posx+sizex-(sizey-sizey/4)/2),posy+sizey/4-(5/2)*2*szorzoy/3) << line(-5*szorzox/3,5*szorzoy/3) << line(10*szorzox/3,0*szorzoy/3) << line(-5*szorzox/3,-5*szorzoy/3);
+            gout << move_to((posx+sizex-(sizey-sizey/4)/2),posy+sizey/4-(5/2)*szorzoy) << line(-5*szorzox/2,5*szorzoy/2) << line(10*szorzox/2,0*szorzoy/2) << line(-5*szorzox/2,-5*szorzoy/2);
+            gout << move_to((posx+sizex-(sizey-sizey/4)/2),posy+sizey/4-(5/2)*2*szorzoy/3) << line(-5*szorzox/3,5*szorzoy/3) << line(10*szorzox/3,0*szorzoy/3) << line(-5*szorzox/3,-5*szorzoy/3);
         }
         else
         {
@@ -85,8 +93,8 @@ Counter::Counter(int _posx, int _posy, int _sizex, int _sizey, string _textmess,
         if (unlogical && focusban)
         {
             gout << color(0,255,0) << move_to(posx+sizex-(sizey-sizey/4)/2,posy+sizey-(sizey/4-(5/2)*szorzoy*2)) << line(-5*szorzox,-5*szorzoy) << line(10*szorzox,0*szorzoy) << line(-5*szorzox,5*szorzoy);
-            gout << color(0,255,0) << move_to(posx+sizex-(sizey-sizey/4)/2,posy+sizey-(sizey/4-(5/2)*szorzoy)) << line(-5*szorzox/2,-5*szorzoy/2) << line(10*szorzox/2,0*szorzoy/2) << line(-5*szorzox/2,5*szorzoy/2);
-            gout << color(0,255,0) << move_to(posx+sizex-(sizey-sizey/4)/2,posy+sizey-(sizey/4-(5/2)*2*szorzoy/3)) << line(-5*szorzox/3,-5*szorzoy/3) << line(10*szorzox/3,0*szorzoy/3) << line(-5*szorzox/3,5*szorzoy/3);
+            gout << move_to(posx+sizex-(sizey-sizey/4)/2,posy+sizey-(sizey/4-(5/2)*szorzoy)) << line(-5*szorzox/2,-5*szorzoy/2) << line(10*szorzox/2,0*szorzoy/2) << line(-5*szorzox/2,5*szorzoy/2);
+            gout << move_to(posx+sizex-(sizey-sizey/4)/2,posy+sizey-(sizey/4-(5/2)*2*szorzoy/3)) << line(-5*szorzox/3,-5*szorzoy/3) << line(10*szorzox/3,0*szorzoy/3) << line(-5*szorzox/3,5*szorzoy/3);
         }
         else
         {

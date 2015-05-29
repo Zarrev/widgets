@@ -8,6 +8,7 @@
 #include "Select.hpp"
 #include "Button.hpp"
 #include "Choose.hpp"
+#include "MyApplication.hpp"
 #include <iostream>
 
 using namespace genv;
@@ -19,6 +20,7 @@ void Application::run()
 {
     gout.open(SX,SY);
     event ev;
+    MyApplication MA;
     gin.timer(20);
     vector<Originalwidget*> Widget;
     Widget.push_back(new Textbox(20,20,100,25,"Ez egy StaticTextBox",1,255,0,0,true));
@@ -42,11 +44,22 @@ void Application::run()
     Widget.push_back(new Textbox(410,50,100,25,"--",13,150,150,150,false));
     Widget.push_back(new Button(410,80,50,25,"ADD",14,600,600,1000,"ADDED",[&]()
     {
+        Widget[12] -> ssetter();
+        Widget[12] -> functionmake(ev);
         if (Widget[12] -> getter().size() != 0)
         {
             Widget[11] -> ssetter3(Widget[12] -> getter());
         }
     }));
+int zero = 0;
+Widget.push_back(new Button(SX*2/3,250,50,25,"Write ou!t",11,600,600,1000,"Check it!",[&]()
+    {
+        MA.thanks();
+        MA.writeout();
+        zero++;
+    }));
+
+    ///   */
     while(gin >> ev && ev.keycode != key_escape)
     {
         gout << move_to(0,0) << color(0,0,0) << box(SX,SY);
@@ -57,6 +70,11 @@ void Application::run()
         Widget[i] -> draw();
         }
         Widget[8] -> ssetter2(Widget[7] -> sgetter("Counter2"));
+
+        for (unsigned int j = 0; j < Widget.size() && zero == 1; j++)
+        {
+            MA.make(Widget[j]->resultgetter());
+        }
         gout << refresh;
 
 
