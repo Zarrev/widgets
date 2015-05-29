@@ -38,9 +38,9 @@ void Application::run()
     {
         Widget[7]-> isetter2();
     }));
-    Widget.push_back(new Choose(300,50,100, 300, 5, 100, 12, 255, 0, 20));
-    Widget.push_back(new Textbox(500,120,100,25,"--",13,150,150,150,false));
-    Widget.push_back(new Button(500,250,50,25,"-",14,600,600,1000,"--",[&]()
+    Widget.push_back(new Choose(300,50,100, 300, 5, 100, 12, 255, 0, 200));
+    Widget.push_back(new Textbox(410,50,100,25,"--",13,150,150,150,false));
+    Widget.push_back(new Button(410,80,50,25,"ADD",14,600,600,1000,"ADDED",[&]()
     {
         if (Widget[12] -> getter().size() != 0)
         {

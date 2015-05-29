@@ -16,6 +16,7 @@ void Choose::draw()
         for (unsigned int i = 0; i < stringtext.size(); i++)
         {
             base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)-counter) << color(r,g,b) << text(stringtext[i]);
+            base << move_to(px,(gout.cascent()+gout.cdescent())*(reckon+1)-counter) << color(r/2,g/2,b/2) << text(stringtext[reckon]);
         }
     }
 
@@ -24,6 +25,7 @@ void Choose::draw()
 
 void Choose::functionmake(event ev)
 {
+
 if (ev.button == btn_wheelup && focusban && counter >= 0)
 {
     counter--;
@@ -33,9 +35,16 @@ if (ev.button == btn_wheeldown && focusban)
     counter++;
 }
 
-if (ev.button == btn_left && focusban) // ay indexkkel kell vararzsolni
+if (ev.button == btn_left && focusban)
 {
-     std::cout << (ev.pos_y - posy-counter)/(gout.cascent()+gout.cdescent()) << std::endl;
+    number = (ev.pos_y - posy+counter)/(gout.cascent()+gout.cdescent());
+    for (unsigned int i = 0; i < stringtext.size() && stringtext.size() != 0; i++)
+    {
+        if (number == i)
+        {
+            reckon = i;
+        }
+    }
 }
 
 }
