@@ -7,6 +7,8 @@ Originalwidget::Originalwidget (int _posx, int _posy, int _sizex, int _sizey) : 
 
 Originalwidget::Originalwidget(int _posx, int _posy, int _sizex, int _sizey, int _row, int _r, int _g, int _b) : posx(_posx), posy(_posy), sizex(_sizex), sizey(_sizey), row(_row), r(_r), g(_g), b(_b) {}
 
+Originalwidget::Originalwidget(int _posx, int _posy, int _sizex, int _sizey, int _px, int _py, int _row, int _r, int _g, int _b) : posx(_posx), posy(_posy), sizex(_sizex), sizey(_sizey), px(_px), py(_py), row(_row), r(_r), g(_g), b(_b) {}
+
 void Originalwidget::focus(event ev, int a)
 {
     if (!statictextbox)
@@ -29,4 +31,9 @@ void Originalwidget::focus(event ev, int a)
             focusban = false;
         }
     }
+}
+
+vector<string> Originalwidget::getter()
+{
+    return stringtext;
 }

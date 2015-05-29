@@ -110,7 +110,6 @@ void Counter2::functionmake(event ev)
         margin = sizex-reckon/sizex;
 
     }
-    std::cout<<textmess<< endl;
 }
 
 string Counter2::sgetter(string a)
