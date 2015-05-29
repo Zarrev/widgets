@@ -38,6 +38,7 @@ public:
     virtual vector<string> getter();
     virtual bool booler(){};
     virtual string resultgetter();
+    virtual void ssetter12() {};
 
 };
 

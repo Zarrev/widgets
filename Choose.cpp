@@ -69,7 +69,17 @@ string Choose::sgetter(string a)
 
 }
 
-void Choose::value()
+void Choose::ssetter()
 {
-
+    if ((1+reckon) != (stringtext.size())){
+    stringtext.erase(stringtext.begin()+reckon);}
+    else
+    {
+        reckon = reckon - 1;
+        stringtext.pop_back();
+        if (reckon < 0)
+        {
+            reckon = 0;
+        }
+    }
 }

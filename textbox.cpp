@@ -50,13 +50,18 @@
             }*/
         }
         if (logical && textmess != "")
-            {
-                if (textmess != "--"){
-                stringtext.push_back(textmess);}
-                textmess = "--";
-                logical = false;
-                counter = 0;
-            }
+        {
+            if (textmess != "--"){
+            stringtext.push_back(textmess);}
+            textmess = "--";
+            logical = false;
+            counter = 0;
+        }
+        if (logical && textmess == "")
+        {
+            counter = 0;
+            textmess = "--";
+        }
         /*if (!focusban && !statictextbox)
         {
             counter = 0;
@@ -77,6 +82,10 @@
     bool Textbox::booler()
     {
 
+    }
+    void Textbox::ssetter3(vector<string> a)
+    {
+        stringtext = a;
     }
     void Textbox::ssetter2(string a)
     {

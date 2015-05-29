@@ -53,15 +53,16 @@ void Application::run()
             Widget[11] -> ssetter3(Widget[12] -> getter());
         }
     }));
-    /*Widget.push_back(new Button(410,80,50,25,"DEL",14,600,600,1000,":(",[&]()
+    Widget.push_back(new Button(410,110,50,25,"DEL",14,600,600,1000,":(",[&]()
     {
-        Widget[12] -> ssetter();
-        Widget[12] -> functionmake(ev);
-        if (Widget[12] -> getter().size() != 0)
+        Widget[11] -> functionmake(ev);
+        if (Widget[11]->getter().size() != 0)
         {
-            Widget[11] -> ssetter3(Widget[12] -> getter());
+            Widget[11]->ssetter();
+            Widget[12]->ssetter3(Widget[11]->getter());
         }
-    }));*/
+        Widget[11] -> functionmake(ev);
+    }));
 Widget.push_back(new Button(SX*2/3,250,50,25,"Write",15,600,600,1000,"Check",[&]()
     {
         MA.clearvecktor();

@@ -7,7 +7,7 @@ class Choose : public Originalwidget
 {
 protected:
 
-    virtual void value ();
+    virtual void value (){};
     canvas base;
 
 public:
@@ -16,7 +16,7 @@ public:
     virtual void draw() ;
     virtual void functionmake(event ev);
     virtual string sgetter(string a);
-    virtual void ssetter() {};
+    virtual void ssetter();
     virtual void ssetter3(vector<string> a);
 
 };

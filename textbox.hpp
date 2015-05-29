@@ -12,6 +12,7 @@ public:
      virtual void ssetter();
      virtual void ssetter2(string a);
      virtual bool booler();
+     virtual void ssetter3(vector<string> a);
 };
 
 #endif // TEXTBOX_HPP_INCLUDED
