@@ -91,15 +91,24 @@ void Counter2::functionmake(event ev)
     value(ev);
     if (what)
     {
+        randomthing = margin;
         margin = 0;
         reckon = sizex*(sizex/counter);
         what = false;
     }
     if (which)
     {
+        randomthing = margin;
         margin = 0;
         reckon = sizex*sizex;
         which = false;
+    }
+
+    if (number == upbar-1)
+    {
+        reckon = sizex*(sizex/counter);
+        margin = sizex-reckon/sizex;
+
     }
     std::cout<<textmess<< endl;
 }
