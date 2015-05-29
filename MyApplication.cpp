@@ -2,8 +2,7 @@
 
 void MyApplication::make(string a)
 {
-    if (thank){
-    selected.push_back(a);}
+    selected.push_back(a);
 }
 
 void MyApplication::writeout()
@@ -16,8 +15,7 @@ void MyApplication::writeout()
     }
     myapplicationValue.close();
 }
-
-void MyApplication::thanks()
+void MyApplication::clearvecktor()
 {
-    thank = true;
+    selected.clear();
 }

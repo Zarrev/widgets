@@ -2,7 +2,10 @@
 #include <iostream>
 
 CheckBox::CheckBox(int _posx, int _posy, int _sizex, int _sizey, int _row, int _r, int _g, int _b)
-: Originalwidget(_posx, _posy, _sizex, _sizey, _row, _r, _g, _b) {}
+: Originalwidget(_posx, _posy, _sizex, _sizey, _row, _r, _g, _b)
+{
+    result = "false";
+}
 
 void CheckBox::draw()
 {

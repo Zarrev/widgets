@@ -20,8 +20,10 @@ void Application::run()
 {
     gout.open(SX,SY);
     event ev;
-    MyApplication MA;
     gin.timer(20);
+
+    MyApplication MA;
+    bool zero = false;
     vector<Originalwidget*> Widget;
     Widget.push_back(new Textbox(20,20,100,25,"Ez egy StaticTextBox",1,255,0,0,true));
     Widget.push_back(new Counter(20,50,100,25,"0",2,20,20,20,100,-5));
@@ -51,12 +53,10 @@ void Application::run()
             Widget[11] -> ssetter3(Widget[12] -> getter());
         }
     }));
-int zero = 0;
 Widget.push_back(new Button(SX*2/3,250,50,25,"Write ou!t",11,600,600,1000,"Check it!",[&]()
     {
-        MA.thanks();
-        MA.writeout();
-        zero++;
+        MA.clearvecktor();
+        zero = true;
     }));
 
     ///   */
@@ -70,13 +70,17 @@ Widget.push_back(new Button(SX*2/3,250,50,25,"Write ou!t",11,600,600,1000,"Check
         Widget[i] -> draw();
         }
         Widget[8] -> ssetter2(Widget[7] -> sgetter("Counter2"));
-
-        for (unsigned int j = 0; j < Widget.size() && zero == 1; j++)
+if (zero)
+    {
+        for (unsigned int j = 0; j < Widget.size(); j++)
         {
+
             MA.make(Widget[j]->resultgetter());
         }
-        gout << refresh;
-
-
+        zero = false;
+        MA.writeout();
     }
+        gout << refresh;
+    }
+
 }

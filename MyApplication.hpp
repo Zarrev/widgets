@@ -14,11 +14,12 @@ protected:
 
     vector<string> selected;
     bool thank = false;
+
 public:
 
     virtual void make(string a);
     virtual void writeout();
-    virtual void thanks();
+    virtual void clearvecktor();
 };
 
 
