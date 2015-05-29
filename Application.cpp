@@ -28,43 +28,29 @@ void Application::run()
     {
 
     }));
-    string textma = "--";
     Widget.push_back(new CheckBox(20,140,25,25,6,255,0,0));
-    Widget.push_back(new CheckBox(50,140,25,25,6,0,255,0));
-    Widget.push_back(new Counter2(20,250,100,25,"0",2,20,20,20,5,0));
-    Widget.push_back(new Button(130,250,50,25,"+",4,600,600,1000,"++",[&]()
+    Widget.push_back(new CheckBox(50,140,25,25,7,0,255,0));
+    Widget.push_back(new Counter2(20,250,100,25,"0",8,20,20,20,22,2));
+    Widget.push_back(new Textbox(250,250,50,25,"--",9,255,0,0,true));
+    Widget.push_back(new Button(130,250,50,25,"+",10,600,600,1000,"++",[&]()
     {
-        for (Originalwidget* w : Widget)
-        {
-            if(Counter2* o = (dynamic_cast <Counter2*>(w)))
-            {
-                o -> isetter();
-                o -> sgetter(textma);
-            }
-        }
+
+        Widget[7] -> isetter();
     }));
-    Widget.push_back(new Button(190,250,50,25,"-",4,600,600,1000,"--",[&]()
+    Widget.push_back(new Button(190,250,50,25,"-",11,600,600,1000,"--",[&]()
     {
-        for (Originalwidget* w : Widget)
-        {
-            if(Counter2* o = (dynamic_cast <Counter2*>(w)))
-            {
-                o -> isetter2();
-                o -> sgetter(textma);
-            }
-        }
+        Widget[7]-> isetter2();
     }));
-    Widget.push_back(new Textbox(230,300,50,25,textma,1,255,0,0,true));
     while(gin >> ev && ev.keycode != key_escape)
     {
         gout << move_to(0,0) << color(0,0,0) << box(SX,SY);
         for (unsigned int i = 0; i < Widget.size(); i++)
         {
-        Widget[i] -> functionmake(ev);
         Widget[i] -> focus(ev,i);
+        Widget[i] -> functionmake(ev);
         Widget[i] -> draw();
         }
-
+        Widget[8] -> ssetter2(Widget[7] -> sgetter("Counter2"));
         gout << refresh;
 
 

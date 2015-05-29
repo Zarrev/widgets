@@ -58,9 +58,15 @@
 
     string Textbox::sgetter(string a)
     {
+            return textmess;
 
     }
     void Textbox::ssetter()
     {
 
+    }
+
+    void Textbox::ssetter2(string a)
+    {
+            textmess = a;
     }

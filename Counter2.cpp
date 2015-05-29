@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <cmath>
 
 
 Counter2::Counter2(int _posx, int _posy, int _sizex, int _sizey, string _textmess, int _row, int _r, int _g, int _b,  int _upbar, int _downbar)
@@ -9,29 +10,29 @@ Counter2::Counter2(int _posx, int _posy, int _sizex, int _sizey, string _textmes
 {
     upbar = _upbar;
     downbar = _downbar;
-    number = _downbar;
     margin = 0;
-    if (downbar < 0)
+    randomthing = 0;
+    if (downbar <= 0)
     {
         counter = upbar+(-1)*downbar;
+        number = 0;
     }
     else
     {
-        counter = upbar+downbar;
+        counter = upbar-downbar;
+        number = _downbar;
     }
     reckon = sizex*(sizex/counter);
+    stringstream ss;
+    ss << number;
+    textmess = ss.str();
+    ss.clear();
 }
 
 void Counter2::value(event ev)
 {
-    if ((ev.button == btn_left xor ev.keycode == key_up xor ev.keycode == key_down) && focusban)
-    {
         if (logical)
         {
-            if (number < upbar)
-            {
-                number++;
-            }
             stringstream ss;
             ss << number;
             textmess = ss.str();
@@ -39,33 +40,33 @@ void Counter2::value(event ev)
         }
         if (unlogical)
         {
-            if (number > downbar)
-            {
-                number--;
-            }
             stringstream ss;
             ss << number;
             textmess = ss.str();
             ss.clear();
         }
-    }
-    if ((ev.keycode == key_pgup xor ev.keycode == key_pgdn)&&focusban)
+
+    if (focusban)
     {
-        if (logical)
+        if (ev.keycode == key_up)
         {
             number = upbar;
             stringstream ss;
             ss << number;
             textmess = ss.str();
             ss.clear();
+            which = true;
+            what = false;
         }
-        if (unlogical)
+        if (ev.keycode == key_down)
         {
             number = downbar;
             stringstream ss;
             ss << number;
             textmess = ss.str();
             ss.clear();
+            what = true;
+            which = false;
         }
     }
 }
@@ -77,28 +78,78 @@ void Counter2::draw()
 
 void Counter2::functionmake(event ev)
 {
+    static int zero = 0;
+    if (downbar <= 0 && zero == 0)
+    {
+        margin = abs(downbar*reckon/sizex);
+    }
+    else if (downbar > 0 && zero == 0)
+    {
+        number = downbar;
+    }
+    zero++;
     value(ev);
+    if (what)
+    {
+        margin = 0;
+        what = false;
+        isetter2();
+    }
+    if (which)
+    {
+        margin = (counter-1)*reckon/sizex;
+        which = false;
+        isetter();
+    }
+    std::cout<<textmess<< endl;
 }
 
 string Counter2::sgetter(string a)
 {
-    a = textmess;
-    return a;
+    return textmess;
 }
 
 void Counter2::isetter()
 {
-    if (margin <= sizex-margin/2)
+    if (number < upbar-1)
     {
         margin += reckon/sizex;
         number++;
+        logical = true;
+        randomthing = margin;
+        unlogical = false;
     }
+    else if (number < upbar)
+    {
+        logical = true;
+        unlogical = false;
+        number++;
+        margin = 0;
+        reckon = sizex*sizex;
+    }
+
 }
 void Counter2::isetter2()
 {
-    if (margin >= posx)
+    if (number == upbar)
+    {
+        if (downbar <= 0)
+        {
+            counter = upbar+(-1)*downbar;
+        }
+        else
+        {
+            counter = upbar-downbar;
+        }
+        reckon = sizex*(sizex/counter);
+        margin = randomthing+reckon/sizex;
+    }
+
+    if (number > downbar && posx < posx+margin) //(margin >= posx-reckon/sizex)
     {
         margin -= reckon/sizex;
         number--;
+        unlogical = true;
+        logical = false;
     }
 }
