@@ -92,14 +92,14 @@ void Counter2::functionmake(event ev)
     if (what)
     {
         margin = 0;
+        reckon = sizex*(sizex/counter);
         what = false;
-        isetter2();
     }
     if (which)
     {
-        margin = (counter-1)*reckon/sizex;
+        margin = 0;
+        reckon = sizex*sizex;
         which = false;
-        isetter();
     }
     std::cout<<textmess<< endl;
 }
