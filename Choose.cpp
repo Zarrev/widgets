@@ -15,13 +15,13 @@ void Choose::draw()
     {
         for (unsigned int i = 0; i < stringtext.size(); i++)
         {
-            base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)-counter+px*px) << color(r,g,b) << text(stringtext[i]);
-            base << move_to(px,(gout.cascent()+gout.cdescent())*(reckon+1)-counter+px*px) << color(r/2,g/2,b/2) << text(stringtext[reckon]);
+            base << move_to(px,(gout.cascent()+gout.cdescent())*(i+1)) << color(r,g,b) << text(stringtext[i]);
+            base << move_to(px,(gout.cascent()+gout.cdescent())*(reckon+1)) << color(r/2,g/2,b/2) << text(stringtext[reckon]);
             result = stringtext[reckon];
         }
     }
 
-    gout << stamp(base, 0, px*px, sizex, sizey, posx, posy);
+    gout << stamp(base, 0, counter, sizex, sizey, posx, posy);
 }
 
 void Choose::functionmake(event ev)
@@ -31,7 +31,7 @@ if (ev.button == btn_wheelup && focusban && counter >= 0)
 {
     counter--;
 }
-if (ev.button == btn_wheeldown && focusban)
+if (ev.button == btn_wheeldown && focusban && counter+sizey-margin <= stringtext.size()*(gout.cascent()+gout.cdescent()))
 {
     counter++;
 }
