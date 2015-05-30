@@ -40,17 +40,17 @@ void Select::draw()
     {
         if(number == i)
         {
-            base<< stamp(selectedCircle, 0, 20*i+gout.cascent());
+            base<< stamp(selectedCircle, 5, 20*i+gout.cascent());
 
         }
         else
         {
-            base<< stamp(circle, 0, 20*i+gout.cascent());
+            base<< stamp(circle, 5, 20*i+gout.cascent());
         }
 
         base << color(255,255,255) << move_to(0+18,(0)+20*(i)+10+gout.cascent()) << text(stringtext[i]);
     }
-    base << color(50,50,50) << move_to(15,20*stringtext.size()+gout.cascent()) << box(85,gout.cascent()*1.5);
+    base << color(50,50,50) << move_to(15,20*stringtext.size()+gout.cascent()) << box(80,gout.cascent()*1.5);
     base << color (255,255,255) << move_to(20,20*stringtext.size()+gout.cascent()*2) << text(textmess);
     if (logical)
     {
@@ -59,10 +59,10 @@ void Select::draw()
     }
     if (unlogical)
     {
-        base << color(100,100,100) << move_to(15,20*stringtext.size()+gout.cascent()) << box(85,gout.cascent()*1.5);
+        base << color(100,100,100) << move_to(15,20*stringtext.size()+gout.cascent()) << box(80,gout.cascent()*1.5);
         base << color (255,255,255) << move_to(20,20*stringtext.size()+gout.cascent()*2) << text(textmess);
     }
-    gout << stamp(base, -5, counter, sizex, sizey, posx, posy);
+    gout << stamp(base, 0, counter, sizex, sizey, posx, posy);
 
 }
 

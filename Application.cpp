@@ -69,10 +69,16 @@ Widget.push_back(new Button(SX*2/3,250,50,25,"Write",15,600,600,1000,"Check",[&]
         zero = true;
     }));
 
-    ///   */
+    /* Dynamic cast
+    for (Widget* w : XXX)
+        {
+            if(Counter* o = (dynamic_cast <Counter*>(w))){
+                cout << o->valaszottam;
+                cout << "\n";}
+    */
     while(gin >> ev && ev.keycode != key_escape)
     {
-        gout << move_to(0,0) << color(0,0,0) << box(SX,SY);
+        gout << move_to(0,0) << color(50,50,50) << box(SX,SY);
         for (unsigned int i = 0; i < Widget.size(); i++)
         {
         Widget[i] -> focus(ev,i);
