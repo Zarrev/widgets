@@ -39,6 +39,7 @@ public:
     virtual bool booler(){};
     virtual string resultgetter();
     virtual void ssetter12() {};
+    virtual void ssgetter(string a) {};
 
 };
 

@@ -43,8 +43,8 @@ void Application::run()
         Widget[7]-> isetter2();
     }));
     Widget.push_back(new Choose(300,50,100, 200, 5, 100, 11, 255, 0, 200));
-    Widget.push_back(new Textbox(410,50,100,25,"--",12,150,150,150,false));
-    Widget.push_back(new Button(410,80,50,25,"ADD",13,600,600,1000,"ADDED",[&]()
+    Widget.push_back(new Textbox(417,50,100,25,"--",12,150,150,150,false));
+    Widget.push_back(new Button(440,80,50,25,"ADD",13,600,600,1000,"ADDED",[&]()
     {
         Widget[12] -> ssetter();
         Widget[12] -> functionmake(ev);
@@ -53,7 +53,7 @@ void Application::run()
             Widget[11] -> ssetter3(Widget[12] -> getter());
         }
     }));
-    Widget.push_back(new Button(410,110,50,25,"DEL",14,600,600,1000,":(",[&]()
+    Widget.push_back(new Button(440,110,50,25,"DEL",14,600,600,1000,":(",[&]()
     {
         Widget[11] -> functionmake(ev);
         if (Widget[11]->getter().size() != 0)
@@ -63,7 +63,33 @@ void Application::run()
         }
         Widget[11] -> functionmake(ev);
     }));
-Widget.push_back(new Button(SX*2/3,250,50,25,"Write",15,600,600,1000,"Check",[&]()
+    Widget.push_back(new Choose(530,50,100, 150, 5, 100, 15, 255, 200, 200));
+    Widget.push_back(new Button(440,140,50,25,"->",16,600,600,1000,"-->",[&]()
+    {
+        Widget[11] -> functionmake(ev);
+        Widget[15] -> functionmake(ev);
+        if (Widget[11]->getter().size() != 0)
+        {
+            Widget[11]->ssetter();
+            Widget[12]->ssetter3(Widget[11]->getter());
+            Widget[15]->ssgetter(Widget[11]->resultgetter());
+        }
+        Widget[15] -> functionmake(ev);
+        Widget[11] -> functionmake(ev);
+    }));
+    Widget.push_back(new Button(440,170,50,25,"<-",16,600,600,1000,"<--",[&]()
+    {
+        Widget[11] -> functionmake(ev);
+        Widget[15] -> functionmake(ev);
+        if (Widget[15]->getter().size() != 0)
+        {
+            Widget[15]->ssetter();
+            Widget[11]->ssgetter(Widget[15]->resultgetter());
+        }
+        Widget[15] -> functionmake(ev);
+        Widget[11] -> functionmake(ev);
+    }));
+Widget.push_back(new Button(SX*2/3,250,50,25,"Write",17,600,600,1000,"Check",[&]()
     {
         MA.clearvecktor();
         zero = true;

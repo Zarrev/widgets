@@ -83,3 +83,8 @@ void Choose::ssetter()
         }
     }
 }
+
+void Choose::ssgetter(string a)
+{
+    stringtext.push_back(a);
+}
