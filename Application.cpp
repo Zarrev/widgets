@@ -79,6 +79,7 @@ void Application::run()
     }));
     Widget.push_back(new Button(440,170,50,25,"<-",16,600,600,1000,"<--",[&]()
     {
+        Widget[12] -> ssetter3(Widget[11] -> getter());
         Widget[11] -> functionmake(ev);
         Widget[15] -> functionmake(ev);
         if (Widget[15]->getter().size() != 0)
@@ -86,6 +87,8 @@ void Application::run()
             Widget[15]->ssetter();
             Widget[11]->ssgetter(Widget[15]->resultgetter());
         }
+
+        Widget[12] -> functionmake(ev);
         Widget[15] -> functionmake(ev);
         Widget[11] -> functionmake(ev);
     }));
